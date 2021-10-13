@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### What Is It?
+* It provides a single source of truth to our application. All of the data is coming from one central location (the **store**).
+* **Provider** gives us  access to our application’s store.
+* **Connect** opens a line of communication from a component to the store.
 
-## Available Scripts
+### Think About It Like This
+* We keep all of our money in a bank account.
+* Our debit card gives us access to that money.
+* Any location with an ATM is connected to our bank account. We can take money out or put money in (*mapDispatchToProps*) or just check our balance (*mapStateToProps*).
 
-In the project directory, you can run:
+## The Redux Flow
+* An event takes place and tells our application we want to change something about the store. Usually something like a form submission.
+* To change the state of our application we call an **action creator**.
+* The action creator produces an **action**.
+* The action gets passed to **dispatch**.
+* Dispatch forwards the action to a **reducer**.
+* The reducer creates a **new state** and returns it.
 
-### `yarn start`
+## The Cash Flow
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* To change the balance in our bank account, we put our card in the ATM and enter our pin. *This is the event that starts the process.*
+* We can choose to make a withdrawal or a deposit. We’ll use a deposit for this example. *Either one of these is an action creator.*
+* We feed some amount of cash into the ATM. *This is our action.*
+* We hit the little green button on the ATM. *This is dispatching an action.*
+* The amount of money is forwarded to the bank. *The action we dispatched is going to our reducer.*
+* The bank determines whether this is a deposit or a withdrawal based on which option (deposit or withdrawal) we chose at the ATM. *A reducer decides what to do based on the type of action dispatched to it.*
+* We have a new balance in our bank account. Once the ATM prints out the receipt we’ll see how our account balance has changed. *The reducer is creating a new state and returning it.*
